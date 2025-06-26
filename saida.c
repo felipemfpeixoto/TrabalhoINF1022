@@ -2,6 +2,6 @@
 
 int main() {
     int temperatura;
-    temperatura = 40;
+    temperatura = 240;
     return 0;
 }

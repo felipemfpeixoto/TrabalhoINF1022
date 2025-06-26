@@ -4,7 +4,6 @@ class ObsActLexer(Lexer):
     tokens = { SET, OBSERVATION, IGUAL, NUM, PONTO }
     ignore = ' \t'
 
-    # Tokens literais
     SET = r'set'
     IGUAL = r'='
     PONTO = r'\.'
@@ -19,29 +18,58 @@ class ObsActLexer(Lexer):
         self.lineno += t.value.count('\n')
 
     def error(self, t):
-        print(f"Caractere ilegal '{t.value[0]}'")
+        print(f"[LEXER] Caractere ilegal: '{t.value[0]}'")
         self.index += 1
 
 class ObsActParser(Parser):
     tokens = ObsActLexer.tokens
 
+    def __init__(self):
+        self.variaveis = set()  # Armazena os nomes de variáveis usados
+
     @_('SET OBSERVATION IGUAL NUM PONTO')
     def comando(self, p):
+        self.variaveis.add(p.OBSERVATION)
         return f'{p.OBSERVATION} = {p.NUM};'
 
 if __name__ == '__main__':
     lexer = ObsActLexer()
     parser = ObsActParser()
 
-    entrada = "set temperatura = 40 ."
+    linhas_convertidas = []
+    erro = False
 
-    tokens = lexer.tokenize(entrada)
-    codigo_c = parser.parse(tokens)
+    with open('programa.obs') as f:
+        linhas = f.readlines()
 
-    with open('saida.c', 'w') as f:
-        f.write('#include <stdio.h>\n\nint main() {\n')
-        f.write(f'    int temperatura;\n')
-        f.write(f'    {codigo_c}\n')
-        f.write('    return 0;\n}')
-    
-    print("Código gerado com sucesso em 'saida.c'")
+    for idx, linha in enumerate(linhas):
+        if linha.strip() == "":
+            continue
+        try:
+            tokens = lexer.tokenize(linha)
+            saida = parser.parse(tokens)
+            if saida:
+                linhas_convertidas.append(saida)
+        except Exception as e:
+            print(f'\n[ERRO] na linha {idx+1} ::: {linha.strip()!r}')
+            erro = True
+            break
+
+    if not erro:
+        with open('programa.c', 'w') as fw:
+            fw.write('#include <stdio.h>\n\nint main() {\n')
+
+            # Declara as variáveis identificadas
+            for var in sorted(parser.variaveis):
+                fw.write(f'    int {var} = 0;\n')
+
+            fw.write('\n')
+            for linha in linhas_convertidas:
+                fw.write(f'    {linha}\n')
+
+            fw.write('    return 0;\n}\n')
+
+        print("\n==============================")
+        print("ObsAct compilado com sucesso!")
+        print("Código gerado em programa.c")
+        print("==============================\n")
