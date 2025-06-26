@@ -1,0 +1,98 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> EXPRESSAO
+Rule 1     EXPRESSAO -> numero OPERACAO numero
+Rule 2     OPERACAO -> mais
+Rule 3     OPERACAO -> menos
+Rule 4     OPERACAO -> multiplicacao
+Rule 5     OPERACAO -> divisao
+
+Terminals, with rules where they appear
+
+divisao              : 5
+error                : 
+mais                 : 2
+menos                : 3
+multiplicacao        : 4
+numero               : 1 1
+
+Nonterminals, with rules where they appear
+
+EXPRESSAO            : 0
+OPERACAO             : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . EXPRESSAO
+    (1) EXPRESSAO -> . numero OPERACAO numero
+
+    numero          shift and go to state 2
+
+    EXPRESSAO                      shift and go to state 1
+
+state 1
+
+    (0) S' -> EXPRESSAO .
+
+
+
+state 2
+
+    (1) EXPRESSAO -> numero . OPERACAO numero
+    (2) OPERACAO -> . mais
+    (3) OPERACAO -> . menos
+    (4) OPERACAO -> . multiplicacao
+    (5) OPERACAO -> . divisao
+
+    mais            shift and go to state 4
+    menos           shift and go to state 5
+    multiplicacao   shift and go to state 6
+    divisao         shift and go to state 7
+
+    OPERACAO                       shift and go to state 3
+
+state 3
+
+    (1) EXPRESSAO -> numero OPERACAO . numero
+
+    numero          shift and go to state 8
+
+
+state 4
+
+    (2) OPERACAO -> mais .
+
+    numero          reduce using rule 2 (OPERACAO -> mais .)
+
+
+state 5
+
+    (3) OPERACAO -> menos .
+
+    numero          reduce using rule 3 (OPERACAO -> menos .)
+
+
+state 6
+
+    (4) OPERACAO -> multiplicacao .
+
+    numero          reduce using rule 4 (OPERACAO -> multiplicacao .)
+
+
+state 7
+
+    (5) OPERACAO -> divisao .
+
+    numero          reduce using rule 5 (OPERACAO -> divisao .)
+
+
+state 8
+
+    (1) EXPRESSAO -> numero OPERACAO numero .
+
+    $end            reduce using rule 1 (EXPRESSAO -> numero OPERACAO numero .)
+
