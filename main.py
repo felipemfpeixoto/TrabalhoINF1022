@@ -23,7 +23,7 @@ from sly import Lexer, Parser
 
 class ObsActLexer(Lexer):
     tokens = { SET, OBSERVATION, NAMEDEVICE, IGUAL, NUM, PONTO,
-               DISPOSITIVO, ABRECHAVES, FECHACHAVES, DOISPONTOS, VIRGULA, LIGAR, DESLIGAR }
+               DISPOSITIVO, ABRECHAVES, FECHACHAVES, DOISPONTOS, VIRGULA, LIGAR, DESLIGAR, ENVIAR, ALERTA, ABREPARENTESES, FECHAPARENTESES, MENSAGEM }
     ignore = ' \t'
 
     SET = r'set'
@@ -38,12 +38,23 @@ class ObsActLexer(Lexer):
     LIGAR = r'ligar'
     DESLIGAR = r'desligar'
 
-    @_(r'[A-Z_][a-zA-Z0-9_]*')
-    def NAMEDEVICE(self, t):
-        return t
+    ENVIAR = r'enviar'
+    ALERTA = r'alerta'
+    
+    ABREPARENTESES = r'\('
+    FECHAPARENTESES = r'\)'
 
-    @_(r'[a-zA-Z][a-zA-Z0-9]*')
-    def OBSERVATION(self, t):
+    @_(r'[a-zA-Z_][a-zA-Z0-9_]*')
+    def ID(self, t):
+        # Heurística: começa com maiúscula → NAMEDEVICE
+        if t.value[0].isupper():
+            t.type = 'NAMEDEVICE'
+        else:
+            t.type = 'OBSERVATION'
+        return t
+    
+    @_(r'"[^"]*"')
+    def MENSAGEM(self, t):
         return t
 
     ignore_newline = r'\n+'
@@ -83,13 +94,13 @@ class ObsActParser(Parser):
     @_('DISPOSITIVO DOISPONTOS ABRECHAVES NAMEDEVICE FECHACHAVES')
     def comando(self, p):
         self.dispositivos.add(p.NAMEDEVICE)
-        return f'// dispositivo declarado: {p.NAMEDEVICE}'
+        return f'// dispositivo declarado: {p.NAMEDEVICE}\n'
     
     @_('DISPOSITIVO DOISPONTOS ABRECHAVES NAMEDEVICE VIRGULA OBSERVATION FECHACHAVES')
     def comando(self, p):
         self.dispositivos.add(p.NAMEDEVICE)
         self.variaveis.add(p.OBSERVATION)
-        return f'// dispositivo {p.NAMEDEVICE} com observação {p.OBSERVATION}'
+        return f'// dispositivo {p.NAMEDEVICE} com observação {p.OBSERVATION}\n'
     
     @_('LIGAR NAMEDEVICE PONTO')
     def comando(self, p):
@@ -98,6 +109,14 @@ class ObsActParser(Parser):
     @_('DESLIGAR NAMEDEVICE PONTO')
     def comando(self, p):
         return f'desligar({p.NAMEDEVICE});'
+    
+    @_('ENVIAR ALERTA ABREPARENTESES MENSAGEM FECHAPARENTESES NAMEDEVICE')
+    def comando(self, p):
+        return f'alerta({p.NAMEDEVICE}, {p.MENSAGEM});'
+    
+    @_('ENVIAR ALERTA ABREPARENTESES MENSAGEM VIRGULA OBSERVATION FECHAPARENTESES NAMEDEVICE')
+    def comando(self, p):
+        return f'alertaVariavel({p.NAMEDEVICE}, {p.MENSAGEM}, {p.OBSERVATION});'
 
 
 if __name__ == '__main__':
@@ -110,6 +129,7 @@ if __name__ == '__main__':
 
     try:
         tokens = list(lexer.tokenize(entrada))
+        print([t.type for t in tokens])  # debug
         saida = parser.parse(iter(tokens))
     except Exception as e:
         print(f'\n[ERRO] ao compilar: {e}')
@@ -137,12 +157,12 @@ if __name__ == '__main__':
             fw.write('\n')
             if saida:
                 for linha in saida.split('\n'):
-                    fw.write(f'    {linha}\n')
+                    fw.write(f'\t{linha}\n')
             elif saida is None:
                 print("[ERRO] O parser não conseguiu entender a entrada.")
                 exit(1)
 
-            fw.write('    return 0;\n}\n')
+            fw.write('\treturn 0;\n}\n')
 
         print("\n==============================")
         print("ObsAct compilado com sucesso!")

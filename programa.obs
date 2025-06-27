@@ -1,6 +1,8 @@
-dispositivo: {Lampada}
 dispositivo: {Termometro, temperatura}
-dispositivo: {Celular, sinal}
-set temperatura = 42 .
-ligar Lampada .
-desligar Lampada .
+dispositivo: {Ventilador, potencia}
+dispositivo: {Computador}
+set temperatura = 40 .
+set potencia = 90 .
+ligar Ventilador .
+ligar Computador .
+enviar alerta ("Mensagem") Termometro
