@@ -18,13 +18,19 @@ void alertaVariavel(char* namedevice, char* msg, int var) {
 	printf("%s %d\n", msg, var);
 }
 
+char Celular[100] = "Celular";
+char Lampada[100] = "Lampada";
+char Termometro[100] = "Termometro";
+
 int main() {
-    int arrasca = 0;
-    int iao = 0;
+    int sinal = 0;
     int temperatura = 0;
 
-    temperatura = 240;
-    iao = 7;
-    arrasca = 10;
+    // dispositivo declarado: Lampada
+    // dispositivo Termometro com observação temperatura
+    // dispositivo Celular com observação sinal
+    temperatura = 42;
+    ligar(Lampada);
+    desligar(Lampada);
     return 0;
 }

@@ -1,3 +1,6 @@
-set temperatura = 240 .
-set iao = 7 .
-set arrasca = 10 .
+dispositivo: {Lampada}
+dispositivo: {Termometro, temperatura}
+dispositivo: {Celular, sinal}
+set temperatura = 42 .
+ligar Lampada .
+desligar Lampada .
