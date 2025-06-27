@@ -1,5 +1,27 @@
 from sly import Lexer, Parser
 
+""""
+Gramática:
+
+PROGRAM −→ DEVICES CMDS
+DEVICES −→ DEVICE DEVICES | DEVICE
+DEVICE −→ dispositivo : {namedevice}
+DEVICE −→ dispositivo : {namedevice, observation}
+CMDS −→ CMD. CMDS | CMD.
+CMD −→ ATTRIB | OBSACT | ACT
+ATTRIB −→ set observation= VAR
+OBSACT −→ se OBS entao ACT
+OBSACT −→ se OBS entao ACT senao ACT
+OBS −→ observation oplogic VAR
+OBS −→ observation oplogic VAR && OBS
+VAR −→ num bool
+ACT −→ ACTION namedevice
+ACT −→ enviar alerta (msg) namedevice
+ACT −→ enviar alerta (msg, observation) namedevice
+ACTION −→ ligar desligar
+
+"""
+
 class ObsActLexer(Lexer):
     tokens = { SET, OBSERVATION, IGUAL, NUM, PONTO }
     ignore = ' \t'
@@ -56,8 +78,15 @@ if __name__ == '__main__':
             break
 
     if not erro:
-        with open('programa.c', 'w') as fw:
-            fw.write('#include <stdio.h>\n\nint main() {\n')
+        with open('saida.c', 'w') as fw:
+            fw.write('#include <stdio.h>\n\n')
+
+            fw.write('void ligar(char* namedevice) {\n\tprintf("%s ligado!\\n", namedevice);\n}\n\n')
+            fw.write('void desligar(char* namedevice) {\n\tprintf("%s desligado!\\n", namedevice);\n}\n\n')
+            fw.write('void alerta(char* namedevice, char* msg) {\n\tprintf("%s recebeu o alerta:\\n", namedevice);\n\tprintf("%s\\n", msg);\n}\n\n')
+            fw.write('void alertaVariavel(char* namedevice, char* msg, int var) {\n\tprintf("%s recebeu o alerta:\\n", namedevice);\n\tprintf("%s %d\\n", msg, var);\n}\n\n') # Não sei se definir essa função com nome diferente vai impactar negativamente no desenvolvimento do trabalho
+
+            fw.write('int main() {\n')
 
             # Declara as variáveis identificadas
             for var in sorted(parser.variaveis):
