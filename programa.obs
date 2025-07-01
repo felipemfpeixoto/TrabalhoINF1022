@@ -6,3 +6,7 @@ set potencia = 90 .
 ligar Ventilador .
 ligar Computador .
 enviar alerta ("Mensagem") Termometro
+se temperatura > 30 entao ligar Ventilador .
+se temperatura < 30 entao desligar Ventilador .
+se temperatura >= 30 entao ligar Ventilador .
+se temperatura <= 30 entao desligar Ventilador .

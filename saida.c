@@ -37,5 +37,17 @@ int main() {
 	ligar(Ventilador);
 	ligar(Computador);
 	alerta(Termometro, "Mensagem");
+	if (temperatura > 30) {
+		ligar(Ventilador);
+	}
+	if (temperatura < 30) {
+		desligar(Ventilador);
+	}
+	if (temperatura >= 30) {
+		ligar(Ventilador);
+	}
+	if (temperatura <= 30) {
+		desligar(Ventilador);
+	}
 	return 0;
 }

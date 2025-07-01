@@ -22,8 +22,13 @@ ACTION −→ ligar desligar
 from sly import Lexer, Parser
 
 class ObsActLexer(Lexer):
-    tokens = { SET, OBSERVATION, NAMEDEVICE, IGUAL, NUM, PONTO,
-               DISPOSITIVO, ABRECHAVES, FECHACHAVES, DOISPONTOS, VIRGULA, LIGAR, DESLIGAR, ENVIAR, ALERTA, ABREPARENTESES, FECHAPARENTESES, MENSAGEM }
+    tokens = {
+        SET, OBSERVATION, NAMEDEVICE, IGUAL, NUM, PONTO,
+        DISPOSITIVO, ABRECHAVES, FECHACHAVES, DOISPONTOS,
+        VIRGULA, LIGAR, DESLIGAR, ENVIAR, ALERTA, ABREPARENTESES,
+        FECHAPARENTESES, MENSAGEM, MAIOR, MENOR, MAIORIGUAL, MENORIGUAL,
+        IGUALIGUAL, DIFERENTE, SE, ENTAO
+    }
     ignore = ' \t'
 
     SET = r'set'
@@ -37,22 +42,29 @@ class ObsActLexer(Lexer):
     VIRGULA = r','
     LIGAR = r'ligar'
     DESLIGAR = r'desligar'
-
     ENVIAR = r'enviar'
     ALERTA = r'alerta'
-    
     ABREPARENTESES = r'\('
     FECHAPARENTESES = r'\)'
 
+    SE = r'se'
+    ENTAO = r'entao'
+
+    MAIORIGUAL = r'>='
+    MENORIGUAL = r'<='
+    IGUALIGUAL = r'=='
+    DIFERENTE = r'!='
+    MAIOR = r'>'
+    MENOR = r'<'
+
     @_(r'[a-zA-Z_][a-zA-Z0-9_]*')
     def ID(self, t):
-        # Heurística: começa com maiúscula → NAMEDEVICE
         if t.value[0].isupper():
             t.type = 'NAMEDEVICE'
         else:
             t.type = 'OBSERVATION'
         return t
-    
+
     @_(r'"[^"]*"')
     def MENSAGEM(self, t):
         return t
@@ -117,6 +129,22 @@ class ObsActParser(Parser):
     @_('ENVIAR ALERTA ABREPARENTESES MENSAGEM VIRGULA OBSERVATION FECHAPARENTESES NAMEDEVICE')
     def comando(self, p):
         return f'alertaVariavel({p.NAMEDEVICE}, {p.MENSAGEM}, {p.OBSERVATION});'
+    
+    @_('SE OBSERVATION MAIOR NUM ENTAO comando')
+    def comando(self, p):
+        return f'if ({p.OBSERVATION} > {p.NUM}) {{\n\t{p.comando}\n}}'
+    
+    @_('SE OBSERVATION MENOR NUM ENTAO comando')
+    def comando(self, p):
+        return f'if ({p.OBSERVATION} < {p.NUM}) {{\n\t{p.comando}\n}}'
+    
+    @_('SE OBSERVATION MAIORIGUAL NUM ENTAO comando')
+    def comando(self, p):
+        return f'if ({p.OBSERVATION} >= {p.NUM}) {{\n\t{p.comando}\n}}'
+    
+    @_('SE OBSERVATION MENORIGUAL NUM ENTAO comando')
+    def comando(self, p):
+        return f'if ({p.OBSERVATION} <= {p.NUM}) {{\n\t{p.comando}\n}}'
 
 
 if __name__ == '__main__':
@@ -129,7 +157,7 @@ if __name__ == '__main__':
 
     try:
         tokens = list(lexer.tokenize(entrada))
-        print([t.type for t in tokens])  # debug
+        # print([t.type for t in tokens])  # debug
         saida = parser.parse(iter(tokens))
     except Exception as e:
         print(f'\n[ERRO] ao compilar: {e}')
