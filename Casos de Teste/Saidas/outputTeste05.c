@@ -23,3 +23,14 @@ char Cortina[100] = "Cortina";
 int main() {
     int luminosidade = 0;
 
+	// dispositivo Cortina com observação luminosidade
+	
+	luminosidade = 600;
+	if (luminosidade > 500) {
+		desligar(Cortina);
+	}
+	if (luminosidade <= 500) {
+		ligar(Cortina);
+	}
+	return 0;
+}

@@ -28,6 +28,27 @@ int main() {
     int rotacao = 0;
     int temperatura = 0;
 
+	// dispositivo Termometro com observação temperatura
+	
+	// dispositivo Ventilador com observação rotacao
+	
+	// dispositivo declarado: Aquecedor
+	
+	// dispositivo Central com observação msg_status
+	
+	temperatura = 28;
+	rotacao = 10;
+	if (temperatura > 25) {
+		if (rotacao < 50) {
+		ligar(Ventilador);
+	}
+	}
+	if (temperatura > 30) {
+		alertaVariavel(Central, "ALERTA: Temperatura muito alta", temperatura);
+	}
+	if (temperatura <= 30) {
+		alerta(Central, "Tudo OK");
+	}
 	desligar(Aquecedor);
 	return 0;
 }

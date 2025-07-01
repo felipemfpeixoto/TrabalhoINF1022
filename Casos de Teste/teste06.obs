@@ -1,3 +1,3 @@
 dispositivo : {Monitor, pressao}
 set pressao = 120.
-enviar alerta ("A pressao e", pressao) Monitor.
+enviar alerta ("A pressao e", pressao) Monitor

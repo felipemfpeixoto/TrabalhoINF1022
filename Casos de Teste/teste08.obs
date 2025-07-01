@@ -5,4 +5,4 @@ set temperatura = 35.
 set potencia = 80.
 se temperatura > 30 entao ligar Ventilador.
 se potencia > 90 entao desligar Lampada.
-enviar alerta ("Ambiente muito quente") Termometro.
+enviar alerta ("Ambiente muito quente") Termometro

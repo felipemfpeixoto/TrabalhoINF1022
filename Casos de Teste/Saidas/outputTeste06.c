@@ -23,3 +23,9 @@ char Monitor[100] = "Monitor";
 int main() {
     int pressao = 0;
 
+	// dispositivo Monitor com observação pressao
+	
+	pressao = 120;
+	alertaVariavel(Monitor, "A pressao e", pressao);
+	return 0;
+}

@@ -22,3 +22,8 @@ char Celular[100] = "Celular";
 
 int main() {
 
+	// dispositivo declarado: Celular
+	
+	alerta(Celular, "Alerta de Seguranca");
+	return 0;
+}

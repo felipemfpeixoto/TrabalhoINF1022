@@ -24,3 +24,17 @@ char Portao[100] = "Portao";
 int main() {
     int status = 0;
 
+	// dispositivo Portao com observação status
+	
+	// dispositivo declarado: Camera
+	
+	status = 0;
+	if (status <= 0) {
+		ligar(Portao);
+	}
+	if (status > 0) {
+		desligar(Portao);
+	}
+	alerta(Camera, "Portao foi aberto");
+	return 0;
+}

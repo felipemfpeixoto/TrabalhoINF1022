@@ -25,6 +25,16 @@ int main() {
     int intensidade = 0;
     int movimento = 0;
 
-	ligar(Alarme);
+	// dispositivo Sensor com observação movimento
+	
+	// dispositivo Alarme com observação intensidade
+	
+	movimento = 1;
+	intensidade = 80;
+	if (movimento > 0) {
+		if (intensidade > 70) {
+		ligar(Alarme);
+	}
+	}
 	return 0;
 }

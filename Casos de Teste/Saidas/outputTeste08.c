@@ -26,3 +26,20 @@ int main() {
     int potencia = 0;
     int temperatura = 0;
 
+	// dispositivo Lampada com observação potencia
+	
+	// dispositivo Ventilador com observação temperatura
+	
+	// dispositivo declarado: Termometro
+	
+	temperatura = 35;
+	potencia = 80;
+	if (temperatura > 30) {
+		ligar(Ventilador);
+	}
+	if (potencia > 90) {
+		desligar(Lampada);
+	}
+	alerta(Termometro, "Ambiente muito quente");
+	return 0;
+}

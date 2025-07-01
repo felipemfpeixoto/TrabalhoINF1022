@@ -1,5 +1,6 @@
 dispositivo : {Portao, status}
 dispositivo : {Camera}
 set status = 0.
-se status == 0 entao ligar Portao. senao desligar Portao.
-enviar alerta ("Portao foi aberto") Camera.
+se status <= 0 entao ligar Portao.
+se status > 0 entao desligar Portao.
+enviar alerta ("Portao foi aberto") Camera
