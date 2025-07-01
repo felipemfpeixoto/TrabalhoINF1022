@@ -152,7 +152,8 @@ if __name__ == '__main__':
     parser = ObsActParser()
 
     erro = False
-    with open('programa.obs') as f:
+    #MUDANDO AQUI PARA TESTES!!!
+    with open('Casos de Teste/teste08.obs') as f:
         entrada = f.read()
 
     try:
@@ -164,7 +165,7 @@ if __name__ == '__main__':
         erro = True
 
     if not erro:
-        with open('saida.c', 'w') as fw:
+        with open('Casos de Teste/Saidas/outputTeste08.c', 'w') as fw:
             fw.write('#include <stdio.h>\n\n')
 
             # Funções auxiliares

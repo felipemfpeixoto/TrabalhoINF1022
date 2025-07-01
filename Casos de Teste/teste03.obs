@@ -1,0 +1,2 @@
+dispositivo : {Celular}
+enviar alerta ("Alerta de Seguranca") Celular.

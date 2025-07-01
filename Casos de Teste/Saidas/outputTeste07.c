@@ -18,16 +18,13 @@ void alertaVariavel(char* namedevice, char* msg, int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Lampada[100] = "Lampada";
-char Ventilador[100] = "Ventilador";
+char Alarme[100] = "Alarme";
+char Sensor[100] = "Sensor";
 
 int main() {
+    int intensidade = 0;
+    int movimento = 0;
 
-	// dispositivo declarado: Lampada
-	
-	// dispositivo declarado: Ventilador
-	
-	ligar(Lampada);
-	desligar(Ventilador);
+	ligar(Alarme);
 	return 0;
 }

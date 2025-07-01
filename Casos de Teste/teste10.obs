@@ -1,0 +1,15 @@
+dispositivo : {Termometro, temperatura}
+dispositivo : {Ventilador, rotacao}
+dispositivo : {Aquecedor}
+dispositivo : {Central, msg_status}
+set temperatura = 28.
+set rotacao = 10.
+
+se temperatura > 25 && rotacao < 50 entao ligar Ventilador.
+
+se temperatura > 30 entao
+    enviar alerta ("ALERTA: Temperatura muito alta", temperatura) Central.
+senao
+    enviar alerta ("Tudo OK", msg_status) Central.
+
+desligar Aquecedor.

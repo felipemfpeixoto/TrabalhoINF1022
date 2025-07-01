@@ -1,0 +1,3 @@
+dispositivo : {Aquecedor, temperatura}
+set temperatura = 18.
+se temperatura < 20 entao ligar Aquecedor.

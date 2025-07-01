@@ -1,0 +1,4 @@
+dispositivo : {Lampada}
+dispositivo : {Ventilador}
+ligar Lampada.
+desligar Ventilador.

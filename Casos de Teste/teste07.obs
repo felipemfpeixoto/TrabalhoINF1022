@@ -1,0 +1,5 @@
+dispositivo : {Sensor, movimento}
+dispositivo : {Alarme, intensidade}
+set movimento = 1.
+set intensidade = 80.
+se movimento == 1 && intensidade > 70 entao ligar Alarme.

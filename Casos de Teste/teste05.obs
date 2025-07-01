@@ -1,0 +1,3 @@
+dispositivo : {Cortina, luminosidade}
+set luminosidade = 600.
+se luminosidade > 500 entao desligar Cortina. senao ligar Cortina.
