@@ -194,7 +194,7 @@ if __name__ == '__main__':
             fw.write('\treturn 0;\n}\n')
 
         print("\n==============================")
-        print("ObsAct compilado com sucesso!")
-        print("Código gerado em saida.c")
+        print("ObsAct compilado com sucesso!\n")
+        print("Código gerado em outputTeste0X.c (X é o numero do teste)\n")
         print("==============================\n")
 
