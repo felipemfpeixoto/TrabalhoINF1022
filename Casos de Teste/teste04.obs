@@ -1,3 +1,4 @@
 dispositivo : {Aquecedor, temperatura}
 set temperatura = 18.
+set estaLigado = FALSE .
 se temperatura < 20 entao ligar Aquecedor.

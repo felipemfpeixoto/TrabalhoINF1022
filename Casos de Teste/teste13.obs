@@ -1,0 +1,4 @@
+dispositivo: {Sensor, umidade}
+dispositivo: {Aspersor}
+set umidade = 55 .
+se umidade <= 40 entao desligar Aspersor .

@@ -1,2 +1,2 @@
 dispositivo : {Termometro, temperatura}
-set temperatura = 25.
+set temperatura = 25 .

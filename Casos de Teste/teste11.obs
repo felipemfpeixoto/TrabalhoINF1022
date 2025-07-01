@@ -1,0 +1,4 @@
+dispositivo: {Sensor, movimento}
+dispositivo: {Alarme}
+set movimento = TRUE .
+enviar alerta ("Movimento detectado") Alarme .

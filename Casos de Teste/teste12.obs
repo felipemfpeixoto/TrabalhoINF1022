@@ -1,0 +1,4 @@
+dispositivo: {Sensor, movimento}
+dispositivo: {Sirene}
+set movimento = FALSE .
+se movimento != TRUE entao ligar Sirene .

@@ -13,7 +13,7 @@ void alerta(char* namedevice, char* msg) {
 	printf("%s\n", msg);
 }
 
-void alertaVariavel(char* namedevice, char* msg, int var) {
+void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s recebeu o alerta:\n", namedevice);
 	printf("%s %d\n", msg, var);
 }

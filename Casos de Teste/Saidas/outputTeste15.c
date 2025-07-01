@@ -18,13 +18,28 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Termometro[100] = "Termometro";
+char Aquecedor[100] = "Aquecedor";
+char Sensor[100] = "Sensor";
+char Ventilador[100] = "Ventilador";
 
 int main() {
+    unsigned int hora = 0;
     unsigned int temperatura = 0;
 
-	// dispositivo Termometro com observação temperatura
+	// dispositivo declarado: Aquecedor
+	
+	// dispositivo declarado: Ventilador
+	
+	// dispositivo Sensor com observação temperatura
 	
 	temperatura = 25;
+	hora = 13;
+	if ((temperatura == 20) && (hora <= 13) && (temperatura != 48)) {
+		ligar(Sensor);
+	} else {
+		desligar(Sensor);
+	}
+	alerta(Aquecedor, "Atenção");
+	alerta(Ventilador, "Atenção");
 	return 0;
 }

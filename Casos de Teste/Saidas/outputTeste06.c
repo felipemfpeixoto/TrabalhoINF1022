@@ -13,7 +13,7 @@ void alerta(char* namedevice, char* msg) {
 	printf("%s\n", msg);
 }
 
-void alertaVariavel(char* namedevice, char* msg, int var) {
+void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s recebeu o alerta:\n", namedevice);
 	printf("%s %d\n", msg, var);
 }
@@ -21,7 +21,7 @@ void alertaVariavel(char* namedevice, char* msg, int var) {
 char Monitor[100] = "Monitor";
 
 int main() {
-    int pressao = 0;
+    unsigned int pressao = 0;
 
 	// dispositivo Monitor com observação pressao
 	

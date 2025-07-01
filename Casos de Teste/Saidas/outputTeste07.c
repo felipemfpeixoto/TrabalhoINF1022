@@ -13,7 +13,7 @@ void alerta(char* namedevice, char* msg) {
 	printf("%s\n", msg);
 }
 
-void alertaVariavel(char* namedevice, char* msg, int var) {
+void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s recebeu o alerta:\n", namedevice);
 	printf("%s %d\n", msg, var);
 }
@@ -22,8 +22,8 @@ char Alarme[100] = "Alarme";
 char Sensor[100] = "Sensor";
 
 int main() {
-    int intensidade = 0;
-    int movimento = 0;
+    unsigned int intensidade = 0;
+    unsigned int movimento = 0;
 
 	// dispositivo Sensor com observação movimento
 	
@@ -31,8 +31,8 @@ int main() {
 	
 	movimento = 1;
 	intensidade = 80;
-	if (movimento > 0) {
-		if (intensidade > 70) {
+	if ((movimento > 0)) {
+		if ((intensidade > 70)) {
 		ligar(Alarme);
 	}
 	}

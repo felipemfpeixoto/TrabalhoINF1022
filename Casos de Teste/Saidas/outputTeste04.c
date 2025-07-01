@@ -13,7 +13,7 @@ void alerta(char* namedevice, char* msg) {
 	printf("%s\n", msg);
 }
 
-void alertaVariavel(char* namedevice, char* msg, int var) {
+void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s recebeu o alerta:\n", namedevice);
 	printf("%s %d\n", msg, var);
 }
@@ -21,12 +21,14 @@ void alertaVariavel(char* namedevice, char* msg, int var) {
 char Aquecedor[100] = "Aquecedor";
 
 int main() {
-    int temperatura = 0;
+    unsigned int estaLigado = 0;
+    unsigned int temperatura = 0;
 
 	// dispositivo Aquecedor com observação temperatura
 	
 	temperatura = 18;
-	if (temperatura < 20) {
+	estaLigado = 0;
+	if ((temperatura < 20)) {
 		ligar(Aquecedor);
 	}
 	return 0;

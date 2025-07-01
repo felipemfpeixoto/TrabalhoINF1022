@@ -13,7 +13,7 @@ void alerta(char* namedevice, char* msg) {
 	printf("%s\n", msg);
 }
 
-void alertaVariavel(char* namedevice, char* msg, int var) {
+void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s recebeu o alerta:\n", namedevice);
 	printf("%s %d\n", msg, var);
 }
@@ -23,8 +23,8 @@ char Termometro[100] = "Termometro";
 char Ventilador[100] = "Ventilador";
 
 int main() {
-    int potencia = 0;
-    int temperatura = 0;
+    unsigned int potencia = 0;
+    unsigned int temperatura = 0;
 
 	// dispositivo Lampada com observação potencia
 	
@@ -34,10 +34,10 @@ int main() {
 	
 	temperatura = 35;
 	potencia = 80;
-	if (temperatura > 30) {
+	if ((temperatura > 30)) {
 		ligar(Ventilador);
 	}
-	if (potencia > 90) {
+	if ((potencia > 90)) {
 		desligar(Lampada);
 	}
 	alerta(Termometro, "Ambiente muito quente");

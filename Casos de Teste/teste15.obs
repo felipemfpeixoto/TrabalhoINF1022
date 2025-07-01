@@ -1,0 +1,8 @@
+dispositivo: {Aquecedor}
+dispositivo: {Ventilador}
+dispositivo: {Sensor, temperatura}
+set temperatura = 25 .
+set hora = 13 .
+se temperatura == 20 && hora <= 13 && temperatura != 48 entao ligar Sensor . senao desligar Sensor .
+
+enviar alerta ("Atenção") para todos: Aquecedor, Ventilador.

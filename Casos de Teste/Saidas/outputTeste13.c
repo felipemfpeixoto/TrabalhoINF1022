@@ -18,23 +18,19 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Camera[100] = "Camera";
-char Portao[100] = "Portao";
+char Aspersor[100] = "Aspersor";
+char Sensor[100] = "Sensor";
 
 int main() {
-    unsigned int status = 0;
+    unsigned int umidade = 0;
 
-	// dispositivo Portao com observação status
+	// dispositivo Sensor com observação umidade
 	
-	// dispositivo declarado: Camera
+	// dispositivo declarado: Aspersor
 	
-	status = 0;
-	if ((status <= 0)) {
-		ligar(Portao);
+	umidade = 55;
+	if ((umidade <= 40)) {
+		desligar(Aspersor);
 	}
-	if ((status > 0)) {
-		desligar(Portao);
-	}
-	alerta(Camera, "Portao foi aberto");
 	return 0;
 }

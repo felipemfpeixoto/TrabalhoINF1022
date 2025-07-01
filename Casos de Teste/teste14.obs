@@ -1,0 +1,6 @@
+dispositivo: {Sensor1, temperatura}
+dispositivo: {Sensor2, movimento}
+dispositivo: {Aquecedor}
+set temperatura = 15 .
+set movimento = TRUE .
+se temperatura < 20 && movimento == TRUE entao ligar Aquecedor .
