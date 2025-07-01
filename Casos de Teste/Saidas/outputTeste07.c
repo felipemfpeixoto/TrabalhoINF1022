@@ -18,23 +18,16 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Alarme[100] = "Alarme";
-char Sensor[100] = "Sensor";
+char ArCondicionado[100] = "ArCondicionado";
 
 int main() {
-    unsigned int intensidade = 0;
-    unsigned int movimento = 0;
+    unsigned int temperatura = 0;
 
-	// dispositivo Sensor com observação movimento
+	// dispositivo declarado: ArCondicionado
 	
-	// dispositivo Alarme com observação intensidade
-	
-	movimento = 1;
-	intensidade = 80;
-	if ((movimento > 0)) {
-		if ((intensidade > 70)) {
-		ligar(Alarme);
-	}
+	temperatura = 30;
+	if ((temperatura > 25)) {
+		ligar(ArCondicionado);
 	}
 	return 0;
 }

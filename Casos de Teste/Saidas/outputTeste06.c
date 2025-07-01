@@ -18,14 +18,14 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Monitor[100] = "Monitor";
+char Tela[100] = "Tela";
 
 int main() {
-    unsigned int pressao = 0;
+    unsigned int temperatura = 0;
 
-	// dispositivo Monitor com observação pressao
+	// dispositivo Tela com observação temperatura
 	
-	pressao = 120;
-	alertaVariavel(Monitor, "A pressao e", pressao);
+	temperatura = 20;
+	alertaVariavel(Tela, "Temperatura atual:", temperatura);
 	return 0;
 }

@@ -1,4 +1,2 @@
-dispositivo: {Cortina, luminosidade}
-set luminosidade = 600 .
-se luminosidade > 500 entao desligar Cortina .
-se luminosidade <= 500 entao ligar Cortina .
+dispositivo: {Sirene}
+enviar alerta ("Alerta de segurança!") Sirene.

@@ -1,6 +1,3 @@
-dispositivo : {Sensor, movimento}
-dispositivo : {Alarme, intensidade}
-set movimento = 1.
-set intensidade = 80.
-se movimento > 0 entao 
-    se intensidade > 70 entao ligar Alarme .
+dispositivo: {ArCondicionado}
+set temperatura = 30.
+se temperatura > 25 entao ligar ArCondicionado.

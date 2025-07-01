@@ -18,28 +18,18 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Lampada[100] = "Lampada";
-char Termometro[100] = "Termometro";
-char Ventilador[100] = "Ventilador";
+char Aquecedor[100] = "Aquecedor";
 
 int main() {
-    unsigned int potencia = 0;
     unsigned int temperatura = 0;
 
-	// dispositivo Lampada com observação potencia
+	// dispositivo declarado: Aquecedor
 	
-	// dispositivo Ventilador com observação temperatura
-	
-	// dispositivo declarado: Termometro
-	
-	temperatura = 35;
-	potencia = 80;
-	if ((temperatura > 30)) {
-		ligar(Ventilador);
+	temperatura = 18;
+	if ((temperatura < 20)) {
+		ligar(Aquecedor);
+	} else {
+		desligar(Aquecedor);
 	}
-	if ((potencia > 90)) {
-		desligar(Lampada);
-	}
-	alerta(Termometro, "Ambiente muito quente");
 	return 0;
 }

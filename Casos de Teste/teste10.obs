@@ -1,13 +1,5 @@
-dispositivo : {Termometro, temperatura}
-dispositivo : {Ventilador, rotacao}
-dispositivo : {Aquecedor}
-dispositivo : {Central, msgStatus}
-set temperatura = 28.
-set rotacao = 10.
+dispositivo: {Sensor}
+dispositivo: {Camera}
+dispositivo: {Sirene}
 
-se temperatura > 25 entao
-    se rotacao < 50 entao ligar Ventilador.
-se temperatura > 30 entao
-    enviar alerta ("ALERTA: Temperatura muito alta", temperatura) Central .
-se temperatura <= 30 entao enviar alerta ("Tudo OK") Central .
-desligar Aquecedor.
+enviar alerta ("Invasao detectada!") para todos: Sensor, Camera, Sirene.

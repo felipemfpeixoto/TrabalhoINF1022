@@ -21,15 +21,10 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 char Aquecedor[100] = "Aquecedor";
 
 int main() {
-    unsigned int estaLigado = 0;
-    unsigned int temperatura = 0;
 
-	// dispositivo Aquecedor com observação temperatura
+	// dispositivo declarado: Aquecedor
 	
-	temperatura = 18;
-	estaLigado = 0;
-	if ((temperatura < 20)) {
-		ligar(Aquecedor);
-	}
+	ligar(Aquecedor);
+	desligar(Aquecedor);
 	return 0;
 }

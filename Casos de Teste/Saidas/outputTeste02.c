@@ -18,12 +18,12 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Termometro[100] = "Termometro";
+char Sensor[100] = "Sensor";
 
 int main() {
     unsigned int temperatura = 0;
 
-	// dispositivo Termometro com observação temperatura
+	// dispositivo declarado: Sensor
 	
 	temperatura = 25;
 	return 0;

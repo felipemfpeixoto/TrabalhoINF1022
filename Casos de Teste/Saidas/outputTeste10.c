@@ -18,37 +18,20 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Aquecedor[100] = "Aquecedor";
-char Central[100] = "Central";
-char Termometro[100] = "Termometro";
-char Ventilador[100] = "Ventilador";
+char Camera[100] = "Camera";
+char Sensor[100] = "Sensor";
+char Sirene[100] = "Sirene";
 
 int main() {
-    unsigned int msgStatus = 0;
-    unsigned int rotacao = 0;
-    unsigned int temperatura = 0;
 
-	// dispositivo Termometro com observação temperatura
+	// dispositivo declarado: Sensor
 	
-	// dispositivo Ventilador com observação rotacao
+	// dispositivo declarado: Camera
 	
-	// dispositivo declarado: Aquecedor
+	// dispositivo declarado: Sirene
 	
-	// dispositivo Central com observação msgStatus
-	
-	temperatura = 28;
-	rotacao = 10;
-	if ((temperatura > 25)) {
-		if ((rotacao < 50)) {
-		ligar(Ventilador);
-	}
-	}
-	if ((temperatura > 30)) {
-		alertaVariavel(Central, "ALERTA: Temperatura muito alta", temperatura);
-	}
-	if ((temperatura <= 30)) {
-		alerta(Central, "Tudo OK");
-	}
-	desligar(Aquecedor);
+	alerta(Sensor, "Invasao detectada!");
+	alerta(Camera, "Invasao detectada!");
+	alerta(Sirene, "Invasao detectada!");
 	return 0;
 }

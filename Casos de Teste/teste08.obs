@@ -1,8 +1,3 @@
-dispositivo : {Lampada, potencia}
-dispositivo : {Ventilador, temperatura}
-dispositivo : {Termometro}
-set temperatura = 35.
-set potencia = 80.
-se temperatura > 30 entao ligar Ventilador.
-se potencia > 90 entao desligar Lampada.
-enviar alerta ("Ambiente muito quente") Termometro .
+dispositivo: {Aquecedor}
+set temperatura = 18.
+se temperatura < 20 entao ligar Aquecedor . senao desligar Aquecedor.

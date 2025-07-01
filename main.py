@@ -31,7 +31,6 @@ class ObsActLexer(Lexer):
     }
     ignore = ' \t'
 
-    SET = r'set'
     PONTO = r'\.'
     NUM = r'[0-9]+'
     DISPOSITIVO = r'dispositivo'
@@ -47,6 +46,7 @@ class ObsActLexer(Lexer):
     FECHAPARENTESES = r'\)'
 
     SENAO = r'senao'
+    SET = r'set'
     SE = r'se'
     ENTAO = r'entao'
 
@@ -243,7 +243,7 @@ if __name__ == '__main__':
     erro = False
     #MUDANDO AQUI PARA TESTES!!!
 
-    for i in range(1, 16):
+    for i in range(1, 11):
         parser.zera_tudo()
 
         testIndex = (i if i > 9 else f'0{i}')

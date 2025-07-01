@@ -18,12 +18,13 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Celular[100] = "Celular";
+char Sensor[100] = "Sensor";
 
 int main() {
+    unsigned int ligado = 0;
 
-	// dispositivo declarado: Celular
+	// dispositivo declarado: Sensor
 	
-	alerta(Celular, "Alerta de Seguranca");
+	ligado = 1;
 	return 0;
 }

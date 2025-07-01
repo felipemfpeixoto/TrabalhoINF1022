@@ -18,19 +18,12 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Cortina[100] = "Cortina";
+char Sirene[100] = "Sirene";
 
 int main() {
-    unsigned int luminosidade = 0;
 
-	// dispositivo Cortina com observação luminosidade
+	// dispositivo declarado: Sirene
 	
-	luminosidade = 600;
-	if ((luminosidade > 500)) {
-		desligar(Cortina);
-	}
-	if ((luminosidade <= 500)) {
-		ligar(Cortina);
-	}
+	alerta(Sirene, "Alerta de segurança!");
 	return 0;
 }

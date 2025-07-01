@@ -18,23 +18,18 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 	printf("%s %d\n", msg, var);
 }
 
-char Camera[100] = "Camera";
-char Portao[100] = "Portao";
+char Ventilador[100] = "Ventilador";
 
 int main() {
-    unsigned int status = 0;
+    unsigned int ligado = 0;
+    unsigned int temperatura = 0;
 
-	// dispositivo Portao com observação status
+	// dispositivo declarado: Ventilador
 	
-	// dispositivo declarado: Camera
-	
-	status = 0;
-	if ((status <= 0)) {
-		ligar(Portao);
+	temperatura = 28;
+	ligado = 1;
+	if ((temperatura > 25) && (ligado == 1)) {
+		ligar(Ventilador);
 	}
-	if ((status > 0)) {
-		desligar(Portao);
-	}
-	alerta(Camera, "Portao foi aberto");
 	return 0;
 }
