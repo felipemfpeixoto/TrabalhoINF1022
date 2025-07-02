@@ -22,10 +22,17 @@ char Luz[100] = "Luz";
 char Sensor[100] = "Sensor";
 
 int main() {
+    unsigned int timer = 0;
 
 	// dispositivo declarado: Sensor
 	
 	// dispositivo declarado: Luz
 	
+	timer = 18;
+	if ((timer <= 18)) {
+		if ((timer > 19)) {
+		ligar(Sensor);
+	}
+	}
 	return 0;
 }

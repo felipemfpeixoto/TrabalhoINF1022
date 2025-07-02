@@ -1,5 +1,5 @@
-dispositivo: {Sensor1, temperatura}
-dispositivo: {Sensor2, movimento}
+dispositivo: {Sensor, temperatura}
+dispositivo: {SensorMovimento, movimento}
 dispositivo: {Aquecedor}
 set temperatura = 15 .
 set movimento = TRUE .

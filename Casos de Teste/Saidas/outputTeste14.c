@@ -19,11 +19,17 @@ void alertaVariavel(char* namedevice, char* msg, unsigned int var) {
 }
 
 char Aquecedor[100] = "Aquecedor";
+char Sensor[100] = "Sensor";
+char SensorMovimento[100] = "SensorMovimento";
 
 int main() {
     unsigned int movimento = 0;
     unsigned int temperatura = 0;
 
+	// dispositivo Sensor com observação temperatura
+	
+	// dispositivo SensorMovimento com observação movimento
+	
 	// dispositivo declarado: Aquecedor
 	
 	temperatura = 15;

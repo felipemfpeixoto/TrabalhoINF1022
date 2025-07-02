@@ -1,24 +1,4 @@
-""""
-Gramática:
-
-PROGRAM −→ DEVICES CMDS
-DEVICES −→ DEVICE DEVICES | DEVICE
-DEVICE −→ dispositivo : {namedevice}
-DEVICE −→ dispositivo : {namedevice, observation}
-CMDS −→ CMD. CMDS | CMD.
-CMD −→ ATTRIB | OBSACT | ACT
-ATTRIB −→ set observation= VAR
-OBSACT −→ se OBS entao ACT
-OBSACT −→ se OBS entao ACT senao ACT
-OBS −→ observation oplogic VAR
-OBS −→ observation oplogic VAR && OBS
-VAR −→ num bool
-ACT −→ ACTION namedevice
-ACT −→ enviar alerta (msg) namedevice
-ACT −→ enviar alerta (msg, observation) namedevice
-ACTION −→ ligar desligar
-
-"""
+# Alunos: Felipe Peixoto e Luana Bueno
 from sly import Lexer, Parser
 
 class ObsActLexer(Lexer):
@@ -243,7 +223,7 @@ if __name__ == '__main__':
     erro = False
     #MUDANDO AQUI PARA TESTES!!!
 
-    for i in range(1, 11):
+    for i in range(1, 16):
         parser.zera_tudo()
 
         testIndex = (i if i > 9 else f'0{i}')

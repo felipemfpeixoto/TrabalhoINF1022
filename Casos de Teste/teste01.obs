@@ -1,2 +1,5 @@
 dispositivo: {Sensor}
 dispositivo: {Luz}
+
+set timer = 18 .
+se timer <= 18 entao se timer > 19 entao ligar Sensor .

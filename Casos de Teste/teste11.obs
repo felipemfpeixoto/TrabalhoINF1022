@@ -1,4 +1,3 @@
 dispositivo: {Sensor, movimento}
 dispositivo: {Alarme}
-set movimento = TRUE .
-enviar alerta ("Movimento detectado") Alarme .
+set movimento = TRUE . se movimento == TRUE entao ligar Alarme .

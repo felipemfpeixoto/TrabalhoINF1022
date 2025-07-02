@@ -29,6 +29,8 @@ int main() {
 	// dispositivo declarado: Alarme
 	
 	movimento = 1;
-	alerta(Alarme, "Movimento detectado");
+	if ((movimento == 1)) {
+		ligar(Alarme);
+	}
 	return 0;
 }
